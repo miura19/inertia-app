@@ -13,7 +13,7 @@ class FlightController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = Auth::user();
         $user_id = Auth::id();
         $flights = Flight::findOrFail($user_id);
         if ($flights->eat === 1){
