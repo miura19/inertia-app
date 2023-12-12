@@ -18,7 +18,8 @@ return new class extends Migration
             $table->date('date');
             $table->time('start_time');
             $table->time('finish_time');
-            $table->string('memo');
+            $table->string('url')->nullable();
+            $table->string('memo')->nullable();
             $table->timestamps();
         });
     }

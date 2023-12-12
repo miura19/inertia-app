@@ -11,7 +11,7 @@ defineProps({
 
 <template>
     <div>
-        <Head title="Shedule List" />
+        <Head title="Schedule List" />
         <AuthenticatedLayout>
         <main class="mx-auto p-6 w-full">
             <div>

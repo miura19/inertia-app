@@ -3,10 +3,10 @@ import { Head , Link } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 defineProps({
     users: {
-        type: Array,
+        type: Object,
     },
     flights: {
-        type: Array,
+        type: Object,
     }
 });
 </script>

@@ -40,7 +40,11 @@ class FlightController extends Controller
     public function listSchedule()
     {
         $user_id = Auth::id();
-        $schedules = Schedule::findOrFail($user_id)->get()->toArray();
+        $schedules = Schedule::find($user_id);
+        if (is_null($schedules)){
+            return to_route('schedule.create');
+        }
+        $schedules = $schedules->orderBy('date', 'asc')->get()->toArray();
         // $formattedSchedules = array_map(function ($schedule) {
         //     $schedule['start_time'] = Carbon::parse($schedule['start_time'])->format('H:i');
         //     return $schedule;
@@ -50,7 +54,7 @@ class FlightController extends Controller
             $schedule['start_time'] = Carbon::parse($schedule['start_time'])->format('H:i');
             $schedule['date'] = Carbon::parse($schedule['date'])->format('m-d');
             $formated_date[] = $schedule;
-        }
+        }   
         
         return Inertia::render('Schedules/List', [
             'schedules' => $formated_date,
@@ -78,6 +82,7 @@ class FlightController extends Controller
         $schedule->date = $request->date;
         $schedule->start_time = $request->start_time;
         $schedule->finish_time = $request->finish_time;
+        $schedule->url = $request->url;
         $schedule->memo = $request->memo;
         $schedule->save();
     

@@ -13,16 +13,14 @@ defineProps({
 
 <template>
     <div>
-        <Head title="Shedule List" />
+        <Head title="Shedule Detail" />
         <AuthenticatedLayout>
         <main class="mx-auto p-6 w-full">
             <div>
                 <h2 class="text-gray-900 text-lg mb-1 font-medium title-font text-center">スケジュール詳細</h2>
-                <div class="mt-6">
-                    {{ schedules.title }}
-                    {{ schedules.start_time }}
-                    {{ schedules.finish_time }}
-                    {{ schedules.memo }}
+                <div class="mt-6 mx-auto w-1/3 flex justify-around">
+                    <p>{{ schedules.start_time }} ～ {{ schedules.finish_time }}</p>
+                    <p>{{ schedules.title }}</p>
                 </div>
             </div>
             <div class="text-center mt-12">

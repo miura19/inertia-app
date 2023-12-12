@@ -14,6 +14,7 @@ const form = useForm({
     date: null,
     start_time: null,
     finish_time: null,
+    url: null,
     memo: null,
   });
 </script>
@@ -45,6 +46,11 @@ const form = useForm({
                         <label for="finish_time" class="leading-7 text-sm text-gray-600">修了時刻</label>
                         <div v-if="form.errors.finish_time" class="text-red-500 font-bold text-lg">{{ form.errors.finish_time }}</div>
                         <input type="time" v-model="form.finish_time" id="finish_time" name="finish_time" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+                    <div class="relative mb-4">
+                        <label for="url" class="leading-7 text-sm text-gray-600">URL</label>
+                        <div v-if="form.errors.url" class="text-red-500 font-bold text-lg">{{ form.errors.url }}</div>
+                        <input type="url" placeholder="https://example.com" v-model="form.url" id="url" name="url" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                     </div>
                     <div class="relative mb-4">
                         <label for="memo" class="leading-7 text-sm text-gray-600">備考</label>

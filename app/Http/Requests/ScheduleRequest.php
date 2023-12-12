@@ -26,6 +26,7 @@ class ScheduleRequest extends FormRequest
             'date' => 'required',
             'start_time' => 'required',
             'finish_time' => 'required',
+            'url' => 'url',
         ];
     }
 }
