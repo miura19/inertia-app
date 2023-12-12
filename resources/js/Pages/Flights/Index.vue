@@ -1,5 +1,5 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head , Link } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 defineProps({
     users: {
@@ -59,6 +59,9 @@ defineProps({
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="mt-12 text-center">
+                            <Link :href="route('schedule.list')" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">スケジュール</Link>
+                        </div>
                     </div>
                 </div>
             </section>

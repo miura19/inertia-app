@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Flight;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
+use App\Http\Requests\ScheduleRequest;
 
 
 class FlightController extends Controller
@@ -28,15 +30,45 @@ class FlightController extends Controller
             'flights' => $flights,
         ]);
     }
-    public function showSchedule()
+    public function createSchedule()
     {
 
-        return Inertia::render('Flights/Schedule', [
+        return Inertia::render('Schedules/Create', [
             
         ]);
     }
+    public function listSchedule()
+    {
+        $user_id = Auth::id();
+        $schedules = Schedule::findOrFail($user_id)->get()->toArray();
+        // $formattedSchedules = array_map(function ($schedule) {
+        //     $schedule['start_time'] = Carbon::parse($schedule['start_time'])->format('H:i');
+        //     return $schedule;
+        // }, $schedules);
+        $formated_date = [];
+        foreach($schedules as $schedule){
+            $schedule['start_time'] = Carbon::parse($schedule['start_time'])->format('H:i');
+            $schedule['date'] = Carbon::parse($schedule['date'])->format('m-d');
+            $formated_date[] = $schedule;
+        }
+        
+        return Inertia::render('Schedules/List', [
+            'schedules' => $formated_date,
+        ]);
+    }
+    public function detailSchedule($id)
+    {
+        $schedules = Schedule::findOrFail($id);
+        // dd($schedules->start_time);
+        $datetime = new Carbon($schedules->start_time);
+        $formated_date = $datetime->format('Y-m-d H:i');
+        dd($formated_date);
+        return Inertia::render('Schedules/Detail', [
+            // 'schedules' => $schedules,
+        ]);
+    }
 
-    public function storeSchedule(Request $request)
+    public function storeSchedule(ScheduleRequest $request)
     {
         $user_id = Auth::id();
         $schedule = new Schedule;
@@ -47,8 +79,7 @@ class FlightController extends Controller
         $schedule->finish_time = $request->finish_time;
         $schedule->memo = $request->memo;
         $schedule->save();
-        return Inertia::render('Flights/Schedule', [
-            
-        ]);
+    
+        return redirect()->route('schedule.list');
     }
 }
