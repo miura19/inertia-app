@@ -58,13 +58,14 @@ class FlightController extends Controller
     }
     public function detailSchedule($id)
     {
-        $schedules = Schedule::findOrFail($id);
+        $schedules = Schedule::findOrFail($id)->toArray();
         // dd($schedules->start_time);
-        $datetime = new Carbon($schedules->start_time);
-        $formated_date = $datetime->format('Y-m-d H:i');
-        dd($formated_date);
+        // $datetime = new Carbon($schedules->start_time);
+        $schedules['start_time'] = Carbon::parse($schedules['start_time'])->format('H:i');
+        $schedules['finish_time'] = Carbon::parse($schedules['finish_time'])->format('H:i');
+        // dd($schedules);
         return Inertia::render('Schedules/Detail', [
-            // 'schedules' => $schedules,
+            'schedules' => $schedules,
         ]);
     }
 
