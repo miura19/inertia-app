@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
 use App\Models\Flight;
+use App\Models\Schedule;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -13,7 +14,7 @@ class FlightController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = Auth::user();
         $user_id = Auth::id();
         $flights = Flight::findOrFail($user_id);
         if ($flights->eat === 1){
@@ -25,6 +26,29 @@ class FlightController extends Controller
         return Inertia::render('Flights/Index', [
             'users' => $users,
             'flights' => $flights,
+        ]);
+    }
+    public function showSchedule()
+    {
+
+        return Inertia::render('Flights/Schedule', [
+            
+        ]);
+    }
+
+    public function storeSchedule(Request $request)
+    {
+        $user_id = Auth::id();
+        $schedule = new Schedule;
+        $schedule->user_id = $user_id;
+        $schedule->title = $request->title;
+        $schedule->date = $request->date;
+        $schedule->start_time = $request->start_time;
+        $schedule->finish_time = $request->finish_time;
+        $schedule->memo = $request->memo;
+        $schedule->save();
+        return Inertia::render('Flights/Schedule', [
+            
         ]);
     }
 }

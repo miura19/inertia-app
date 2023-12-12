@@ -32,6 +32,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/flight', [FlightController::class, 'index'])->name('flight.index');
+    Route::get('/schedule', [FlightController::class, 'showSchedule'])->name('flight.show.schedule');
+    Route::post('/schedule/store', [FlightController::class, 'storeSchedule'])->name('flight.store.schedule');
 
 
 

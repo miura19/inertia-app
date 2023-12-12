@@ -22,7 +22,7 @@ defineProps({
                     </div>
                     <div class="w-full mx-auto">
                         <div>
-                            <p>SATO/WATARU</p>
+                            <p>{{ users.name }}</p>
                         </div>
                         <div>
                             <p>FLIGHT</p>
