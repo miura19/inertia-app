@@ -28,6 +28,14 @@
             "dest": "/api/index.php"
         }
     ],
+    "headers": [
+        {
+          "source": "/public/build/assets/(.*\\.js)",
+          "headers": [
+            { "key": "Content-Type", "value": "application/javascript" }
+          ]
+        }
+      ],
     "env": {
         "APP_NAME": "Laravel Vercel",
         "APP_DEBUG": "false",
