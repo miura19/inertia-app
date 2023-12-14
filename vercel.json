@@ -12,7 +12,10 @@
     ],
     "routes": [
         {
-            "src": "/build/assets/(.*)",
+            "src": "/build/assets/(.*\\.js)",
+            "headers": [
+                { "key": "Content-Type", "value": "application/javascript" }
+            ],
             "dest": "/public/build/assets/$1"
         },
         {
@@ -26,12 +29,6 @@
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
-        },
-        {
-            "src": "/build/assets/(.*\\.js)",
-            "headers": {
-                "Content-Type": "application/javascript"
-            }
         }
     ],
     "env": {
