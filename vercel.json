@@ -29,9 +29,9 @@
         },
         {
             "src": "/build/assets/(.*\\.js)",
-            "headers": [
-              { "key": "Content-Type", "value": "application/javascript" }
-            ]
+            "headers": {
+                "Content-Type": "application/javascript"
+            }
         }
     ],
     "env": {
