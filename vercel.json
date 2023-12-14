@@ -28,20 +28,6 @@
             "dest": "/api/index.php"
         }
     ],
-    "headers": [
-        {
-          "source": "/build/assets/Welcome-d9da8045.js",
-          "headers": [
-            { "key": "Content-Type", "value": "application/javascript" }
-          ]
-        },
-        {
-            "source": "/build/assets/app-c8d6d9ed.js",
-            "headers": [
-              { "key": "Content-Type", "value": "application/javascript" }
-            ]
-        }
-      ],
     "env": {
         "APP_NAME": "Laravel Vercel",
         "APP_DEBUG": "false",
