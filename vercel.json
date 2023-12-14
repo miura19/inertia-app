@@ -26,6 +26,12 @@
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
+        },
+        {
+            "src": "/build/assets/(.*\\.js)",
+            "headers": [
+              { "key": "Content-Type", "value": "application/javascript" }
+            ]
         }
     ],
     "env": {
