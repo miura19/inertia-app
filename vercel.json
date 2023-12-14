@@ -30,7 +30,7 @@
     ],
     "headers": [
         {
-          "source": "/public/build/assets/(.*\\.js)",
+          "src": "/public/build/assets/(.*\\.js)",
           "headers": [
             { "key": "Content-Type", "value": "application/javascript" }
           ]
