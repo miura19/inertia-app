@@ -19,6 +19,13 @@
             "dest": "/public/build/assets/$1"
         },
         {
+            "src": "/build/assets/(.*\\.css)",
+            "headers": {
+                "Content-Type": "text/css"
+            },
+            "dest": "/public/build/assets/$1"
+        },
+        {
             "src": "/favicon.ico",
             "dest": "/public/favicon.ico"
         },
